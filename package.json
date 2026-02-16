@@ -1,0 +1,54 @@
+{
+	"name": "fmd",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "bun run --bun next start",
+		"lint": "biome check",
+		"format": "biome format --write",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"@atlaskit/pragmatic-drag-and-drop": "^1.7.7",
+		"@atlaskit/pragmatic-drag-and-drop-auto-scroll": "^2.1.2",
+		"@atlaskit/pragmatic-drag-and-drop-flourish": "^2.0.10",
+		"@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.1.0",
+		"@atlaskit/pragmatic-drag-and-drop-react-drop-indicator": "^3.2.10",
+		"@base-ui/react": "^1.0.0",
+		"@clerk/nextjs": "^6.36.7",
+		"@hookform/resolvers": "^5.2.2",
+		"@neondatabase/serverless": "^1.0.2",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"dotenv": "^17.2.3",
+		"drizzle-orm": "^0.45.1",
+		"googleapis": "^167.0.0",
+		"next": "^16.1.1",
+		"next-themes": "^0.4.6",
+		"react": "^19.2.3",
+		"react-day-picker": "^9.13.0",
+		"react-dom": "^19.2.3",
+		"react-hook-form": "^7.70.0",
+		"zod": "^4.3.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"@types/node": "^20.19.27",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"@unocss/postcss": "66.5.10",
+		"@unocss/preset-wind4": "^66.5.10",
+		"babel-plugin-react-compiler": "^1.0.0",
+		"colorizr": "^4.0.0",
+		"drizzle-kit": "^0.31.8",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"typescript": "^5.9.3",
+		"unocss": "^66.5.10"
+	},
+	"lint-staged": {
+		"*": "biome format --write"
+	}
+}

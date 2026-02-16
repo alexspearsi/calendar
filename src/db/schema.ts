@@ -1,0 +1,6 @@
+import { integer, pgTable, text } from "drizzle-orm/pg-core";
+
+export const user = pgTable("user", {
+	id: integer("id").primaryKey(),
+	name: text("name").notNull(),
+});
