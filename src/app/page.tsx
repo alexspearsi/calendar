@@ -1,24 +1,26 @@
-import { SignedOut, SignInButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button/button";
-import { SignInIcon } from "@/components/ui/icons/sign-in";
+"use client";
+import { DatePicker } from "@/components/ui/datepicker/datepicker";
+import { useState } from "react";
+// import { DateRange } from 'react-day-picker';
 
-export default async function Home() {
-	// const users = await getData();
+export default function Home() {
+	// for range mode
+	// const [range, setRange] = useState<DateRange>();
+	// console.log(range);
+
+	// for single mode
+	const [date, setDate] = useState<Date>();
+	console.log(date);
+
 	return (
 		<div className="flex flex-col w-60 mx-auto justify-center grow">
-			{/* <SignedIn>
-      </SignedIn> */}
-			<SignedOut>
-				<div className="flex flex-col gap-20d p-16d bg-neutral-1 rounded-12d border-muted border">
-					<p>Hi! Sign in to start.</p>
-					<SignInButton>
-						<Button intent={"secondary"} appearance={"subtle"} lifted>
-							Sign In
-							<SignInIcon />
-						</Button>
-					</SignInButton>
-				</div>
-			</SignedOut>
+			<DatePicker
+				size="l"
+				shape="square"
+				mode="single"
+				selected={date}
+				onSelect={setDate}
+			/>
 		</div>
 	);
 }
