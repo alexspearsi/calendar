@@ -55,9 +55,20 @@ const calendarRootVariants = cva("", {
 });
 
 export type CalendarProps = VariantProps<typeof calendarVariants> &
-	(PropsSingle | PropsRange);
+	(PropsSingle | PropsRange) & {
+		time?: boolean;
+		timeValue?: string;
+		onTimeChange?: (value: string) => void;
+	};
 
-export function Calendar({ size, shape, ...dayPickerProps }: CalendarProps) {
+export function Calendar({
+	size,
+	shape,
+	time,
+	timeValue,
+	onTimeChange,
+	...dayPickerProps
+}: CalendarProps) {
 	return (
 		<>
 			<DayPicker
@@ -111,23 +122,25 @@ export function Calendar({ size, shape, ...dayPickerProps }: CalendarProps) {
 				}}
 			/>
 
-			{/* optional time input */}
-			<div className="flex items-center justify-center gap-3">
-				<Label size={size} htmlFor="time">
-					Enter time
-				</Label>
+			{time && (
+				<div className="flex items-center justify-center gap-3">
+					<Label size={size} htmlFor="time">
+						Enter time
+					</Label>
 
-				<TextInput
-					id="time"
-					type="time"
-					width="fill"
-					step="1"
-					defaultValue="12:00:00"
-					size={size}
-					shape={shape}
-					className={cn("[&::-webkit-calendar-picker-indicator]:hidden")}
-				/>
-			</div>
+					<TextInput
+						id="time"
+						type="time"
+						width="fill"
+						step="1"
+						value={timeValue}
+						onChange={(event) => onTimeChange?.(event.target.value)}
+						size={size}
+						shape={shape}
+						className={cn("[&::-webkit-calendar-picker-indicator]:hidden")}
+					/>
+				</div>
+			)}
 		</>
 	);
 }
@@ -145,15 +158,9 @@ const dropdownTriggerVariants = cva("cursor-pointer", {
 			trigger: "",
 			option: "hover:surface-secondary-subtle",
 		},
-		shape: {
-			rounded: "rounded",
-			square: "rounded-none",
-			circular: "rounded-full",
-		},
 	},
 	defaultVariants: {
 		size: "m",
-		shape: "rounded",
 	},
 });
 
@@ -164,7 +171,7 @@ const dropdownContainerVariants = cva(
 			shape: {
 				rounded: "rounded",
 				square: "rounded-none",
-				circular: "rounded-full",
+				circular: "rounded-2xl",
 			},
 		},
 		defaultVariants: {
@@ -174,6 +181,7 @@ const dropdownContainerVariants = cva(
 );
 
 type DropDownSelectProps = VariantProps<typeof dropdownTriggerVariants> &
+	VariantProps<typeof dropdownContainerVariants> &
 	Omit<DropdownProps, "size">;
 
 function DropdownSelect({
@@ -194,7 +202,7 @@ function DropdownSelect({
 			<button
 				type="button"
 				onClick={() => setIsOpen((v) => !v)}
-				className={cn(dropdownTriggerVariants({ size, type: "trigger", shape }))}
+				className={cn(dropdownTriggerVariants({ size, type: "trigger" }))}
 			>
 				{formatLabel(selected?.label)}
 			</button>

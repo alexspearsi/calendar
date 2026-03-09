@@ -28,7 +28,11 @@ const datepickerVariants = cva(null, {
 });
 
 export type DatePickerProps = VariantProps<typeof datepickerVariants> &
-	React.ComponentProps<typeof Calendar>;
+	React.ComponentProps<typeof Calendar> & {
+		time?: boolean;
+		timeValue?: string;
+		onTimeChange?: (value: string) => void;
+	};
 
 export function DatePicker({ size, shape, ...calendarProps }: DatePickerProps) {
 	return (

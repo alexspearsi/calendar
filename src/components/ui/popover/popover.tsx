@@ -24,6 +24,7 @@ export const popoverVariants = cva(
 			shape: {
 				rounded: null,
 				square: "rounded-none",
+				// circular: "rounded-4xl"
 				circular: "rounded-full",
 			},
 		},
