@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button/button";
 import { DatePicker } from "@/components/ui/datepicker/datepicker";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
@@ -28,6 +29,12 @@ export default function Home() {
 				timeValue={time}
 				onTimeChange={setTime}
 			/>
+
+			<div style={{ marginTop: "10px" }}>
+				<Button appearance="ghost" intent="success">
+					кнопка
+				</Button>
+			</div>
 		</div>
 	);
 }

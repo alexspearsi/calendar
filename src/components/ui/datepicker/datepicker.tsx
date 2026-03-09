@@ -6,7 +6,7 @@ import { Calendar } from "../calendar/calendar";
 import { Popover } from "../popover/popover";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// TODO сделать проброс свойств настраивающих поведение (отключение времени, изменение режима с диапазона на единичный и тп)
+// // TODO сделать проброс свойств настраивающих поведение (отключение времени, изменение режима с диапазона на единичный и тп)
 
 const datepickerVariants = cva(null, {
 	variants: {

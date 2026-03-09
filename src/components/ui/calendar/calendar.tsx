@@ -20,8 +20,6 @@ import { useState } from "react";
 // //4. зафиксировать высоту календаря
 // 5. кнопки в панели управления оформить через поверхности (surface-foreground-ghost)
 
-/* -------------------- styles -------------------- */
-
 const calendarVariants = cva("h-[2em] w-[2em] cursor-pointer", {
 	variants: {
 		size: {
@@ -145,8 +143,6 @@ export function Calendar({
 	);
 }
 
-/* -------------------- DropdownSelect -------------------- */
-
 const dropdownTriggerVariants = cva("cursor-pointer", {
 	variants: {
 		size: {
@@ -231,7 +227,13 @@ function DropdownSelect({
 }
 
 function formatLabel(label?: string) {
-	if (!label) return "";
-	if (/^\d+$/.test(label)) return label;
-	return label.slice(0, 3);
+	if (!label) {
+		return "";
+	}
+
+	if (/^\d+$/.test(label)) {
+		return label;
+	} else {
+		return label.slice(0, 3);
+	}
 }
